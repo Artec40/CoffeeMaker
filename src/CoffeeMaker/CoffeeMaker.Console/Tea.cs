@@ -24,6 +24,4 @@ namespace CoffeeMaker.ConsoleApp
             this.Type = type;
         }
     }
-
-
 }
