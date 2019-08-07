@@ -7,26 +7,20 @@ namespace CoffeeMaker.ConsoleApp
     /// <summary>
     /// Это чаёк.
     /// </summary>
-    public class Tea
+    public class Tea : Drink
     {
-        ///  <summary>
-        ///  Объём напитка. 
-        ///  </summary>
-        public int VolumeTea { get; set; }
-
         /// <summary>
         /// Тип чаёчка.
         /// </summary>
-        public string Type { get; set; }
+        public string Type { get; }
 
         /// <summary>
         /// Инициализируем чаёк.
         /// </summary>
         /// <param name="volume"> Значения для поля объёма. </param> 
         /// <param name="type"> Значения для поля типа. </param>
-        public Tea(int volume, string type)
+        public Tea(int volume, string type) : base(volume)
         {
-            this.VolumeTea = volume;
             this.Type = type;
         }
     }

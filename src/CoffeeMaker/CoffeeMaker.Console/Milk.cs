@@ -7,12 +7,12 @@ namespace CoffeeMaker.ConsoleApp
     /// <summary>
     /// Это молоко.
     /// </summary>
-    class Milk
+    public class Milk
     {
         /// <summary>
         /// Жирность молока.
         /// </summary>
-        public double Fat { get; set; }
+        public double Fat { get; }
 
         /// <summary>
         /// Инициализируем молоко.

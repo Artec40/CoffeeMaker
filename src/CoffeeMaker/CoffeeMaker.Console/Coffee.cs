@@ -7,27 +7,21 @@ namespace CoffeeMaker.ConsoleApp
     /// <summary>
     /// Это кофейный напиток.
     /// </summary>
-    public class Coffee
+    public class Coffee : Drink
     {
-        /// <summary>
-        /// Объём кофе.
-        /// </summary>
-        public int VolumeCoffee { get; set; }
-
         /// <summary>
         /// Крепость кофе.
         /// </summary>
-        public int Strong { get; set; }
+        public int Strong { get; }
 
         /// <summary>
         /// Инициализируем коффейный напиток.
         /// </summary>
         /// <param name="volume"> Значения для поля объёма.</param>
         /// <param name="strong"> Значения для поля крепости.</param>
-        public Coffee(int volume, int strong)
+        public Coffee(int volume, int strong) : base(volume)
         {
             this.Strong = strong;
-            this.VolumeCoffee = volume;
         }
     }
 }
