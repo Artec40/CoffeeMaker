@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CoffeeMaker.ConsoleApp
+﻿namespace CoffeeMaker.ConsoleApp
 {
     /// <summary>
     /// Это чаёк.
@@ -19,7 +15,8 @@ namespace CoffeeMaker.ConsoleApp
         /// </summary>
         /// <param name="volume"> Значения для поля объёма. </param> 
         /// <param name="type"> Значения для поля типа. </param>
-        public Tea(int volume, string type) : base(volume)
+        /// <param name="price"> Значения для поля цены. </param>
+        public Tea(int volume, string type, Money price) : base(volume, price)
         {
             this.Type = type;
         }

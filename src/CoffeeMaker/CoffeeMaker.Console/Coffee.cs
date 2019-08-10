@@ -12,14 +12,15 @@ namespace CoffeeMaker.ConsoleApp
         /// <summary>
         /// Крепость кофе.
         /// </summary>
-        public int Strong { get; }
+        public StrongType Strong { get; }
 
         /// <summary>
         /// Инициализируем коффейный напиток.
         /// </summary>
         /// <param name="volume"> Значения для поля объёма.</param>
         /// <param name="strong"> Значения для поля крепости.</param>
-        public Coffee(int volume, int strong) : base(volume)
+        /// <param name="price"> Значения для поля стоимости.</param>
+        public Coffee(int volume, StrongType strong, Money price) : base(volume, price)
         {
             this.Strong = strong;
         }

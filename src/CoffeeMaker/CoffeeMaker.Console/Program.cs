@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CoffeeMaker.ConsoleApp
 {
@@ -6,25 +7,69 @@ namespace CoffeeMaker.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var smallDrink = new Coffee(100, 8);
-            var bigDrink = new Coffee(400, 3);
-            Console.WriteLine($"cup of coffee 1: {smallDrink.Volume}, {smallDrink.Strong}.");
-            Console.WriteLine($"cup of coffee 2: {bigDrink.Volume}, {bigDrink.Strong}.");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Choose your drink: coffee, tea.");
+            while (true)
+            {
+                ChooseDrink();
+            }
+        }
+        static void WriteColorLine(string messageText, ConsoleColor consoleColor)
+        {
+            var currentConsoleColor = Console.ForegroundColor;
+            Console.ForegroundColor = consoleColor;
+            Console.WriteLine(messageText);
+            Console.ForegroundColor = currentConsoleColor;
+        }
 
-            var cupOfBlackTea = new Tea(300, "Black");
-            var cupOfGreenTea = new Tea(300, "Green");
-            Console.WriteLine($"cup of tea 1: {cupOfBlackTea.Volume}, {cupOfBlackTea.Type}.");
-            Console.WriteLine($"cup of tea 2: {cupOfGreenTea.Volume}, {cupOfGreenTea.Type}.");
+        static void ChooseDrink()
+        {
+            var command = Console.ReadLine();
+            switch (command)
+            {
+                case "coffee":
+                    Console.WriteLine("you choose coffee.");
+                    CreateCoffee();
 
-            var milk = new Milk(1.5);
-            Console.WriteLine($"Milk:, {milk.Fat}.");
+                    break;
+                case "tea":
+                    Console.WriteLine("you choose tea.");
+                    var cupOfTea = new Tea(250, "Black", 80);
+                    break;
+                default:
+                    WriteColorLine("Bad command, try again later.", ConsoleColor.Red);
+                    break;
+            }
+        }
 
-            var mouse = new Mouse();
-            Console.WriteLine(mouse.Roar(string.Empty));
+        static void CreateCoffee()
+        {
+            Console.WriteLine("Volume? - 100, 250");
+            var volume = Console.ReadLine();
+            var cupOfCoffee = new Coffee(Convert.ToInt32(volume), StrongType.Hard, 100);
+            Console.WriteLine($"Your price {cupOfCoffee.Price}");
 
-            var mouse2 = new LittleMouse();
-            Console.WriteLine(mouse2.Roar(string.Empty));
-            Console.WriteLine("Hello world!");
+            Console.WriteLine("Additive? - milk, cinnamon, sugar");
+            var additive = Console.ReadLine();
+            switch (additive)
+            {
+                case "milk":
+                    Console.WriteLine("you choose milk.");
+                    var milk = new Milk(2.5);
+                    cupOfCoffee.AddAditive(milk);
+                    break;
+                case "cinnamon":
+                    Console.WriteLine("you choose cinnamon.");
+                    var cinnamon = new Cinnamon();
+                    cupOfCoffee.AddAditive(cinnamon);
+                    break;
+                case "sugar":
+                    Console.WriteLine("you choose sugar.");
+                    var sugar = new Sugar();
+                    cupOfCoffee.AddAditive(sugar);
+                    break;
+            }
+            Console.WriteLine($"Your price {cupOfCoffee.Price}");
         }
     }
 }

@@ -7,8 +7,10 @@ namespace CoffeeMaker.ConsoleApp
     /// <summary>
     /// Это молоко.
     /// </summary>
-    public class Milk
+    public class Milk : IAdditive
     {
+        public Money Price { get; } = 20;
+
         /// <summary>
         /// Жирность молока.
         /// </summary>
